@@ -14,7 +14,7 @@ pipeline {
             steps {  
                 sh '''
                 docker build -t poornendra/repo:ngin .
-                docker run -itd --name assignngin -p 8050:80 ngin 
+                docker run -d --name nginassignment -p 9000:80 poornendra/repo:ngin  
                 '''
             }
         }
