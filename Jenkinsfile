@@ -1,18 +1,20 @@
 pipeline {
-    agent any 
+   agent { label 'slave3' }
     environment {
-    DOCKERHUB_CREDENTIALS = credentials('valaxy-dockerhub')
+    DOCKERHUB_CREDENTIALS = credentials('Docker')
     }
     stages { 
         stage('SCM Checkout') {
             steps{
-            git 'https://github.com/ravdy/nodejs-demo.git'
+        git branch: 'main', url: 'https://github.com/poornendra002/assign22-12.git'
             }
         }
 
-        stage('Build docker image') {
+        stage('Build stage') {
             steps {  
-                sh 'docker build -t valaxy/nodeapp:$BUILD_NUMBER .'
+                sh '''
+                docker build -t poornendra/repo:ngin .
+                '''
             }
         }
         stage('login to dockerhub') {
@@ -26,9 +28,4 @@ pipeline {
             }
         }
 }
-post {
-        always {
-            sh 'docker logout'
-        }
-    }
 }
