@@ -12,7 +12,7 @@ pipeline {
         stage('login to dockerhub') {
             steps{
             withCredentials([usernameColonPassword(credentialsId: 'docker-latestpassword', variable: 'doc-passwd')]) {
-   sh "docker login -u username -p ${doc-passwd}"
+   sh "docker login -u $doc-passwd --password-stdin"
 }
       }             
         }
