@@ -4,7 +4,7 @@ pipeline {
         stage('Build stage') {
             steps {  
                 sh '''
-                docker build -t poornendra/repo:ngin .
+                docker build -t poornendra/repo:$BUILD_NUMBER .
                 docker run -d -p 9990:80 poornendra/repo:$BUILD_NUMBER 
                 '''
             }
