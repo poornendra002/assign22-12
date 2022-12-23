@@ -3,13 +3,7 @@ pipeline {
     environment {
     DOCKERHUB_CREDENTIALS = credentials('Docker')
     }
-    stages { 
-        stage('SCM Checkout') {
-            steps{
-        git branch: 'main', url: 'https://github.com/poornendra002/assign22-12.git'
-            }
-        }
-
+   
         stage('Build stage') {
             steps {  
                 sh '''
@@ -29,4 +23,4 @@ pipeline {
             }
         }
 }
-}
+
