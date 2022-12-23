@@ -18,8 +18,10 @@ pipeline {
         }
         stage('push image') {
             steps{
-                docker run -d -p 9999:80 poornendra/repo:$BUILD_NUMBER 
-                sh 'docker push poornendra/repo:$BUILD_NUMBER'
+                    sh 'docker push poornendra/repo:$BUILD_NUMBER'
+                    
+                sh 'docker run -d -p 9999:80 poornendra/repo:$BUILD_NUMBER' 
+        
             }
         }
 }
