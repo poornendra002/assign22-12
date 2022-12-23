@@ -3,12 +3,12 @@ pipeline {
     environment {
     DOCKERHUB_CREDENTIALS = credentials('Docker')
     }
-   
+   stages {
         stage('Build stage') {
             steps {  
                 sh '''
                 docker build -t poornendra/repo:ngin .
-                docker run -d --name nginassignment -p 9000:80 poornendra/repo:ngin  
+                docker run -d --name nginassignment1 -p 9000:80 poornendra/repo:ngin  
                 '''
             }
         }
@@ -23,4 +23,4 @@ pipeline {
             }
         }
 }
-
+}
