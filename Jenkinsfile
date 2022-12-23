@@ -8,7 +8,7 @@ pipeline {
             steps {  
                 sh '''
                 docker build -t poornendra/repo:ngin .
-                docker run -d --name nginassignment1 -p 9090:80 poornendra/repo:ngin  
+                docker run -d --name nginassignment2 -p 9090:80 poornendra/repo:ngin  
                 '''
             }
         }
