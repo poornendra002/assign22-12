@@ -1,0 +1,27 @@
+pipeline {
+   agent { label 'slave3' }
+   
+   stages {
+        stage('Build stage') {
+            steps {  
+                sh '''
+                docker build -t poornendra/repo:ngin .
+                docker run -d --name nginassignment2 -p 9090:80 poornendra/repo:ngin  
+                '''
+            }
+        }
+        stage('login to dockerhub') {
+            steps{
+            withCredentials([usernameColonPassword(credentialsId: '0ae2a6fd-b795-4039-8bd8-4c5dc6e0bd8e', variable: 'password-docker')]) {
+   sh "docker login -u username -p ${password-docker}"
+}
+            
+               
+        }
+        stage('push image') {
+            steps{
+                sh 'docker push poornendra/repo:ngin'
+            }
+        }
+}
+}
