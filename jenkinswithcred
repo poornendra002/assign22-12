@@ -5,7 +5,7 @@ pipeline {
             steps {  
                 sh '''
                 docker build -t poornendra/repo:$BUILD_NUMBER .
-                docker run -d -p 9990:80 poornendra/repo:$BUILD_NUMBER 
+                docker run -d -p 9999:80 poornendra/repo:$BUILD_NUMBER 
                 '''
             }
         }
